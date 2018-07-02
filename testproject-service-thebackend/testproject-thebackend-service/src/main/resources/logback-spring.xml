@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Die evtl. vorhandenen Properties bezueglich der "logging.level" in der application.yml 
+		und bootstrap.yml haben Vorrang vor den in dieser Datei gepflegten log-level   -->
+<configuration>
+		
+
+
+    <springProfile name="local,test,no-security,openshift">
+
+        <!-- Log-Appender -->
+        <appender name="ROLLING_FILE_LOGGER"
+                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>./target/thebackend.log</file>
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <pattern>
+                    %date{yyyy.MM.dd HH:mm:ss.SSS} | %level | [%thread] | %logger{0} | [%file : %line]  -  %msg%n
+                </pattern>
+            </encoder>
+            <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+                <!-- rollover  -->
+                <fileNamePattern>./target/archived/thebackend.%d{yyyy-MM-dd}.%i.log
+                </fileNamePattern>
+                <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                    <maxFileSize>1MB</maxFileSize>
+                </timeBasedFileNamingAndTriggeringPolicy>
+                <!-- keep 1 day worth of history -->
+                <maxHistory>1</maxHistory>
+                <!-- up to 5 MB max -->
+                <totalSizeCap>5MB</totalSizeCap>
+            </rollingPolicy>
+        </appender>
+
+        <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder>
+                <pattern>
+                    %date{yyyy.MM.dd HH:mm:ss.SSS} | %level | [%thread] | %logger{0} | [%file : %line]  -  %msg%n
+                </pattern>
+            </encoder>
+        </appender>
+
+        <!-- Logger -->
+        <logger name="de.muenchen.testproject" level="debug"
+                additivity="false">
+            <appender-ref ref="ROLLING_FILE_LOGGER" />
+        </logger>
+
+        <logger name="de.muenchen.testproject" level="debug"
+                additivity="false">
+            <appender-ref ref="STDOUT" />
+        </logger>
+
+        <logger name="de.muenchen.testproject.commons.unicode" level="warn"
+                additivity="false">
+            <appender-ref ref="STDOUT" />
+        </logger>
+
+        <logger name="org.springframework.cache" level="trace"
+                additivity="false">
+            <appender-ref ref="STDOUT" />
+        </logger>
+
+        <!-- Definition der Loggerverwendung -->
+        <root level="info">
+            <appender-ref ref="STDOUT" />
+            <appender-ref ref="ROLLING_FILE_LOGGER" />
+        </root>
+
+    </springProfile>
+
+
+
+
+    <springProfile name="Coding,Konsolidierung,Produktion">
+
+        <!-- Log-Appender -->
+        <appender name="ROLLING_FILE_LOGGER"
+                  class="ch.qos.logback.core.rolling.RollingFileAppender">
+            <file>/opt/lhm/thebackend_microservice/logs/thebackend.log</file>
+            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+                <pattern>
+                    %date{yyyy.MM.dd HH:mm:ss.SSS} | %level | [%thread] | %logger{0} | [%file : %line]  -  %msg%n
+                </pattern>
+            </encoder>
+            <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+                <!-- rollover  -->
+                <fileNamePattern>/opt/lhm/thebackend_microservice/logs/archived/thebackend.%d{yyyy-MM-dd}.%i.log
+                </fileNamePattern>
+                <maxFileSize>10MB</maxFileSize>
+                <!-- keep 30 days' worth of history -->
+                <maxHistory>30</maxHistory>
+                <!-- up to 5 GB max -->
+                <totalSizeCap>5GB</totalSizeCap>
+            </rollingPolicy>
+        </appender>
+
+        <!-- Logger -->
+        <logger name="de.muenchen.testproject" level="debug"
+                additivity="false">
+            <appender-ref ref="ROLLING_FILE_LOGGER" />
+        </logger>
+
+        <!-- Definition der Loggerverwendung -->
+        <root level="error">
+            <appender-ref ref="ROLLING_FILE_LOGGER" />
+        </root>
+
+    </springProfile>
+		
+
+
+</configuration>

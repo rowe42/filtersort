@@ -1,0 +1,210 @@
+spring:
+  # if you want to set a different profile
+  # use environment variable:
+  #
+  # e.g.
+  # SPRING_PROFILES_ACTIVE=Produktion
+  profiles.active: local
+  # the application name exposed to the discovery service. Be
+  # careful changing this value in this file. If you change it, 
+  # you have to refactor the values for client side load balancing.
+  # If it's possible, change this property with the generator gui.
+  application.name: THEBACKEND-MICROSERVICE
+  #JPA
+  jpa:
+    hibernate.naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+# ignore special network interfaces
+# itm: only eth1 is allowed (without a/n/s)
+  cloud:
+    inetutils:
+      ignoredInterfaces:
+        - eth[^1]
+management.port: ${server.port}
+# allow access to actuator /info endpoint with authentification
+security:
+  ignored: "/info"
+
+---
+spring:
+  profiles: local
+  # DB
+  # --- 
+  # in memory db for local use
+  # 
+  datasource:
+    url: jdbc:h2:mem:data_ref
+    username: sa
+    password:
+  #JPA
+  jpa:
+    database: H2
+    hibernate:
+        # always drop and create the db should be the best
+        # configuration for local (development) mode. this 
+        # is also the default, that spring offers by convention.
+        # but here explicite:
+        ddl-auto: create-drop
+    # Logging for database operation
+    show-sql: true
+    properties.hibernate:
+      format_sql: true
+      # Hibernate search
+      search.default:
+        directory_provider: filesystem
+        indexBase: ./target/thebackend_microservice/search_indexbase
+# random server port to avoid port conflicts on localhost
+server.port: 0
+
+---
+spring:
+    profiles: Coding
+    # DB
+    # ---
+    # for production environment overwrite db setting
+    # with configuration server.
+    #
+    datasource:
+        url: jdbc:h2:mem:data_ref
+        #url: jdbc:h2:tcp://localhost/~/java_data
+        username: sa
+        password:
+        # To configure connection pooling, use the parameters from profile
+        # 'docker'. Without configuration the default values will be used
+        # (see description above).
+    #JPA
+    jpa:
+        database: H2
+        # see expanation in docker profile
+        ddl-auto: create-drop
+# inside a vm, we can always map to 8080. 
+server.port: 8080
+
+---
+spring:
+    profiles: Konsolidierung
+    # DB
+    # ---
+    # for production environment overwrite db setting
+    # with configuration server.
+    #
+    datasource:
+        url: jdbc:h2:mem:data_ref
+        #url: jdbc:h2:tcp://localhost/~/java_data
+        username: sa
+        password:
+        # To configure connection pooling, use the parameters from profile
+        # 'docker'. Without configuration the default values will be used
+        # (see description above).
+    #JPA
+    jpa:
+        database: H2
+        # see expanation in docker profile
+        ddl-auto: create-drop
+# inside a vm, we can always map to 8080.
+server.port: 8080
+
+---
+spring:
+    profiles: Produktion
+    # DB
+    # ---
+    # for production environment overwrite db setting
+    # with configuration server.
+    #
+    datasource:
+        url: jdbc:h2:mem:data_ref
+        #url: jdbc:h2:tcp://localhost/~/java_data
+        username: sa
+        password:
+        # To configure connection pooling, use the parameters from profile
+        # 'docker'. Without configuration the default values will be used
+        # (see description above).
+    #JPA
+    jpa:
+        database: H2
+        # see expanation in docker profile
+        ddl-auto: create-drop
+# inside a vm, we can always map to 8080.
+server.port: 8080
+
+---
+spring:
+    profiles: Coding,Konsolidierung,Produktion
+    # Hibernate search
+    jpa.hibernate.properties.hibernate.search.default:
+        directory_provider : filesystem
+        indexBase : /opt/lhm/thebackend_microservice/search_indexbase
+
+---
+spring:
+    profiles: test
+    application.name: THEBACKEND-MICROSERVICE-TEST
+    #JPA
+    jpa:
+        # Logging for database operation
+        show-sql: true
+        properties.hibernate.format_sql: true
+
+---
+spring:
+    profiles: no-security
+    # DB
+    # ---
+    # in memory db for local use
+    #
+    datasource:
+      url: jdbc:h2:mem:data_ref
+      username: sa
+      password:
+    #JPA
+    jpa:
+      database: H2
+      hibernate:
+        # always drop and create the db should be the best
+        # configuration for local (development) mode. this
+        # is also the default, that spring offers by convention.
+        # but here explicite:
+        ddl-auto: create-drop
+    # Logging for database operation
+    show-sql: true
+    properties.hibernate:
+      format_sql: true
+      # Hibernate search
+      search.default:
+        directory_provider: filesystem
+        indexBase: ./target/administration_microservice/search_indexbase
+# random server port to avoid port
+# conflicts on localhost
+server.port: 39146
+
+---
+spring:
+    profiles: openshift
+    # DB
+    # ---
+    # in memory db for local use
+    #
+    datasource:
+      url: jdbc:h2:mem:testproject
+      username: sa
+      password:
+    #JPA
+    jpa:
+      database: H2
+      hibernate:
+        # always drop and create the db should be the best
+        # configuration for local (development) mode. this
+        # is also the default, that spring offers by convention.
+        # but here explicite:
+        ddl-auto: create-drop
+    # Logging for database operation
+    show-sql: true
+    properties.hibernate:
+      format_sql: true
+      # Hibernate search
+      search.default:
+        directory_provider: filesystem
+        indexBase: ./target/administration_microservice/search_indexbase
+# random server port to avoid port
+# conflicts on localhost
+server.port: 39146

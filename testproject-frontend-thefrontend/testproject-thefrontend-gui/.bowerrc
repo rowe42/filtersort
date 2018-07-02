@@ -1,0 +1,6 @@
+{
+  "//" : "Barrakuda issue https://gitp001.srv.ha3.dir.muenchen.de/mdsd/barrakuda/issues/441 to avoid GET call to https://fonts.googleapis.*",
+  "scripts": {
+    "postinstall": "node -e \"require('fs').writeFileSync('bower_components/font-roboto/roboto.html', '<!-- Overwritten for gui de.muenchen.testproject.admin.thefrontend during postinstall sequence on ' + new Date().toISOString() + ' to get rid of roboto fonts -->')\""
+  }
+}

@@ -1,0 +1,123 @@
+# Service Info
+spring:
+  profiles:
+    active: local
+
+  #i18n
+  messages:
+      basename: message
+      cache-seconds: -1
+      encoding: UTF-8
+
+  # Spring data rest
+  data.rest:
+      return-body-on-update : true
+      return-body-on-create : true
+
+info.url: http://localhost:${service.port}/
+service:
+    info:
+        oid: TESTPROJECT-THEBACKEND
+        name: Thebackend
+        version: v0.0.1-SNAPSHOT
+    configuration:
+        maxSearchResults: 50
+
+logging.level.org.springframework.cloud.netflix.config : 'OFF'
+logging.level.com.netflix.discovery : 'OFF'
+
+#Wiremock
+URL : http://localhost:8089/
+
+#Define caching provider or deactivate caching globally
+# E.g.: Global deactivation
+# spring.cache.type: none
+
+#Version GuavaCache (deprecated)
+spring.cache.guava.spec: maximumSize=500,expireAfterAccess=420s
+
+#Version CaffeineCache
+#spring.cache.cache-names: KEEPER_CACHE, ENCLOSURE_CACHE, ANIMAL_CACHE, permissionsCache
+#spring.cache.caffeine.spec: maximumSize=500,expireAfterAccess=420s
+
+#Properties for activation or deactivation of caching in the respective repository
+theBigEntity.repository.cache.active: false
+firstRealtionEntity.repository.cache.active: false
+secondRealtionEntity.repository.cache.active: false
+dateEntity.repository.cache.active: false
+customEntity.repository.cache.active: false
+fall.repository.cache.active: false
+abstractEntity.repository.cache.active: false
+firstLevelEntity.repository.cache.active: false
+secondLevelEntity.repository.cache.active: false
+firstLevelCyclicEntity.repository.cache.active: false
+secondLevelCyclicEntity.repository.cache.active: false
+
+---
+# LOCAL CONFIGURATION
+spring:
+    profiles: local
+    h2.console.enabled: true
+server.port: 39146
+
+security:
+  basic:
+    enabled: false
+  oauth2:
+    entitlements:
+      entitlementsUri: http://localhost:8080/auth/realms/demo/authz/entitlement/openIdDemo   
+    permissions:
+      permissionsUri: http://localhost:8870/permissions
+    resource:
+      filter-order: 3
+      jwt:
+        key-value: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlsteeVtC+LlM/uhuusceFDvKbeCPolBEpq+rNnRbBvSPDCdKGcIIpjrQswX/58loE/bQ45A5IY1Tlm1MWbGxZ0IZhYaILeTNySTK3aRsV94OpN+ib/PGWkP1aQZ6wdm4//C6whOhCbulbLwSTyjByD72FGdaO/OhrATD9OAEcP0QmrvjLRHQBA80lxB4fRCyIrea9aL/AuvBsAbTz1Ub70rH8ydwaPtev7/L4dY+9NaqoL23pLIYyV7k3cuPeyHU/lt4I68R4rNiFv08zQFWGMr+li13cWNi9KsNfP5h6Ce7h+D2WmOUv7Tm9b8rAJ4jGHuf8ylHWt0SQxBtofuldwIDAQAB
+    client:
+      client-id: openIdDemo
+
+---
+spring:
+    profiles: Coding
+
+---
+spring:
+    profiles: Konsolidierung
+
+---
+spring:
+    profiles: Produktion
+
+---
+spring:
+    profiles: Coding,Konsolidierung,Produktion
+
+---
+# NO-SECURITY CONFIGURATION
+spring:
+    profiles: no-security
+    h2.console.enabled: true
+
+security:
+    ignored: /**
+    permissions:
+      permissionsUri: http://localhost:8870/permissions
+---
+# OPENSHIFT CONFIGURATION
+spring:
+    profiles: openshift
+server.port: 8080
+
+security:
+  basic:
+    enabled: false
+  oauth2:
+    entitlements:
+      entitlementsUri: https://ssodev.muenchen.de/auth/realms/demo/authz/entitlement/openIdDemo   
+    permissions:
+      permissionsUri: http://user-service:8080/permissions
+    resource:
+      filter-order: 3
+      jwt:
+        key-value: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5YUs1ITW6qEbxlc93i0BAWYfhdpH94WcGlYS8ayzoKJA8G3QN4JiAn4Wp4VwCuUkf3bh3Y1YdFqlN42Rz5DeTi86Wilhle2fJthboBneGiaQZvszdGz8wMNcdqDC45dTLunJ5PnesVoMK6OQ/osk+7t/04QsMSJZtD+QodaKtj2a1KyUXBlX0yclG6R+XrzP2BSh4ixuiwwnFu8tffqOOmNMmtiNj4nS20S0P82QLXVhjy4NgP4UHXpLGtD1pJFQRO2MXh+N7NEVZrF76fIXTtmqGq0I/Ko87vjGxTEDcZNC/oWFRLkiEVtB+eSYM+NeB4vMhgIygbqt+4+YlQf0hQIDAQAB
+    client:
+      client-id: openIdDemo

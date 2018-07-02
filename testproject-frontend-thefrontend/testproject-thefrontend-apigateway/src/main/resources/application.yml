@@ -1,0 +1,105 @@
+# GLOBAL CONFIGURATION
+spring:
+    # if you want to set a different profile
+    # use environment variable:
+    #
+    # SPRING_PROFILES_ACTIVE=docker
+    profiles.active: local
+    application.name: Zuul
+
+
+---
+# LOCAL CONFIGURATION
+spring:
+    profiles: local
+
+server.port: 8082
+
+
+zuul:
+  ignoredServices: '*'
+  host:
+    socket-timeout-millis: 120000
+  routes:
+    user:
+      path: /api/user_service/**
+      url: http://localhost:8870/
+      add-proxy-headers: true
+    thebackend:
+      path: /api/testproject-thebackend-service/**
+      url: http://localhost:39146/
+      add-proxy-headers: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: ${zuul.host.socket-timeout-millis}
+
+security:
+  oauth2:
+    client:
+      clientId: openIdDemo
+      clientSecret: f33048d1-82be-42de-81d9-71356ab8b19d
+      accessTokenUri: http://localhost:8080/auth/realms/demo/protocol/openid-connect/token
+      userAuthorizationUri: http://localhost:8080/auth/realms/demo/protocol/openid-connect/auth
+    resource:
+      jwt:
+        key-value: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlsteeVtC+LlM/uhuusceFDvKbeCPolBEpq+rNnRbBvSPDCdKGcIIpjrQswX/58loE/bQ45A5IY1Tlm1MWbGxZ0IZhYaILeTNySTK3aRsV94OpN+ib/PGWkP1aQZ6wdm4//C6whOhCbulbLwSTyjByD72FGdaO/OhrATD9OAEcP0QmrvjLRHQBA80lxB4fRCyIrea9aL/AuvBsAbTz1Ub70rH8ydwaPtev7/L4dY+9NaqoL23pLIYyV7k3cuPeyHU/lt4I68R4rNiFv08zQFWGMr+li13cWNi9KsNfP5h6Ce7h+D2WmOUv7Tm9b8rAJ4jGHuf8ylHWt0SQxBtofuldwIDAQAB
+  sessions: ALWAYS
+
+endpoints.routes.sensitive: false
+       
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG      
+      
+---
+# DOCKER CONFIGURATION
+spring:
+    profiles: docker
+---
+# NO-SECURITY CONFIGURATION
+spring:
+    profiles: no-security
+    h2.console.enabled: true
+
+security.ignored: /**    
+
+      
+---
+# OPENSHIFT CONFIGURATION
+spring:
+    profiles: openshift
+
+server.port: 8080
+
+# zuul routes
+zuul:
+  ignoredServices: '*'
+  routes:
+    user:
+      path: /api/user_service/**
+      url: http://user-service:8080/
+      add-proxy-headers: true
+    thebackend:
+      path: /api/testproject-thebackend-service/**
+      url: http://testproject-thebackend-service:8080/
+      add-proxy-headers: true 
+
+security:
+  oauth2:
+    client:
+      clientId: openIdDemo
+      clientSecret: 57446039-4005-493a-9e94-137424d599d8
+      accessTokenUri: https://ssodev.muenchen.de/auth/realms/demo/protocol/openid-connect/token
+      userAuthorizationUri: https://ssodev.muenchen.de/auth/realms/demo/protocol/openid-connect/auth
+    resource:
+      jwt:
+        key-value: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA5YUs1ITW6qEbxlc93i0BAWYfhdpH94WcGlYS8ayzoKJA8G3QN4JiAn4Wp4VwCuUkf3bh3Y1YdFqlN42Rz5DeTi86Wilhle2fJthboBneGiaQZvszdGz8wMNcdqDC45dTLunJ5PnesVoMK6OQ/osk+7t/04QsMSJZtD+QodaKtj2a1KyUXBlX0yclG6R+XrzP2BSh4ixuiwwnFu8tffqOOmNMmtiNj4nS20S0P82QLXVhjy4NgP4UHXpLGtD1pJFQRO2MXh+N7NEVZrF76fIXTtmqGq0I/Ko87vjGxTEDcZNC/oWFRLkiEVtB+eSYM+NeB4vMhgIygbqt+4+YlQf0hQIDAQAB
+  sessions: ALWAYS
+
+endpoints.routes.sensitive: false

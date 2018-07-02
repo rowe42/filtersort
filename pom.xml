@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <parent>
+        <groupId>de.muenchen</groupId>
+        <artifactId>muenchen-pom</artifactId>
+        <version>1.1.0</version>
+    </parent>
+
+
+    <groupId>de.muenchen.testproject</groupId>
+    <artifactId>testproject-root</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>testproject_root</name>
+    <packaging>pom</packaging>
+
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<xtext-version>2.9.1</xtext-version>
+	</properties>
+
+
+	<profiles>
+		<!--
+		PROFILE *build* IS ACTIVE BY DEFAULT; 
+		USE PROFILE *generate* FOR MAVEN GOAL *xtext:generate*
+		-->
+		<profile>
+			<id>build</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+    		<modules>
+    			<module>testproject-commons</module>
+        		<module>testproject-service-thebackend</module>
+        		<module>testproject-frontend-thefrontend</module>
+    		</modules>
+		</profile>
+		<profile>
+			<id>generate</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+		</profile>
+	</profiles>
+
+
+	<build>
+		<sourceDirectory>src/main/barrakuda</sourceDirectory>
+		
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.eclipse.xtext</groupId>
+                    <artifactId>xtext-maven-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <!-- unbind from generate-sources -->  
+                            <phase>none</phase>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.xtext</groupId>
+				<artifactId>xtext-maven-plugin</artifactId>
+				<version>${xtext-version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<languages>
+						<language>
+							<setup>de.muenchen.dsl.barrakuda.BarrakudaStandaloneSetup</setup>
+							<outputConfigurations>
+								<outputConfiguration>
+									<name>gen-once</name>
+									<outputDirectory>./</outputDirectory>
+									<overrideExistingResources>false</overrideExistingResources>
+								</outputConfiguration>
+								<outputConfiguration>
+									<name>gen-always</name>
+									<outputDirectory>./</outputDirectory>
+									<overrideExistingResources>true</overrideExistingResources>
+								</outputConfiguration>
+							</outputConfigurations>
+						</language>
+					</languages>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>de.muenchen.dsl.barrakuda</groupId>
+						<artifactId>generator</artifactId>
+						<version>2.0.3-SNAPSHOT</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>

@@ -1,0 +1,198 @@
+domain testproject package de.muenchen version 0.0.1;
+
+serviceModel thebackend package de.muenchen.testproject.admin version 0.0.1 {
+
+    // Lists (enumerations)
+    // Contains static data that does not change
+    customListType animals [Elephant, Giraffe, Penguin, Barrakuda];
+    customListType gender [male, female];
+    customListType features [cleaning, feeding, breeding, paperwork, taxes];
+
+    customLogicType bool;
+
+    // Text Patterns
+    // here we need a simple text type with a mininmal length of 2 and a maximum of 30
+    customTextType textMin2Max30 minLength=2 maxLength=30;
+
+    customTextType textMail type=mail;
+    customTextType textPhone allowedRegex="\\d\\d+" type=phone;
+
+    // Numbers
+    // A simple floating point number
+    customNumberType theDouble pointNumber;
+
+    customNumberType theInt minValue=0;
+
+    // Dates
+    // We need one date datatype for dates that lie in the past
+    // and one for dates in combination with a time
+    customTimeType pastDate inThePast date;
+    customTimeType futureDate inTheFuture date;
+    customTimeType event dateAndTime;
+    customTimeType daytime time;
+
+    valueObject FirstLevelVo {
+        secondLevel SecondLevelVo searchable;
+        theFirstLevelText textMin2Max30 searchable "42";
+    }
+
+    valueObject SecondLevelVo {
+        thirdLevel ThirdLevelVo searchable;
+        theSecondLevelText textMin2Max30 searchable "42";
+    }
+
+    valueObject ThirdLevelVo {
+        theThirdLevelText textMin2Max30 searchable "42";
+        theGender gender "male";
+    }
+
+    entity TheBigEntity {
+        attribute01 textMin2Max30 searchable "test";
+        attribute02 textMin2Max30 searchable "test";
+        secondRelationOtm oneToMany SecondRealtionEntity bidirectional;
+        secondRelationMtm manyToMany SecondRealtionEntity bidirectional;
+        secondRelationOto oneToOne SecondRealtionEntity bidirectional;
+        secondRelationMto manyToOne SecondRealtionEntity bidirectional;
+        firstRelationMtm manyToMany FirstRealtionEntity;
+    }
+
+
+    entity FirstRealtionEntity {
+        theEntityText textMail searchable "test@test.de";
+    }
+
+    entity SecondRealtionEntity handleLikeAttribute {
+        theEntityText textMail searchable "test@test.de";
+    }
+
+    entity DateEntity {
+        theDate pastDate searchable "12.12.2012";
+        theDateTime event searchable "01.01.2001 10:15:30";
+        theTime daytime searchable optional "12:12:12";
+
+    }
+
+    entity CustomEntity {
+        text textMin2Max30 searchable "test";
+        name textMin2Max30 searchable "test";
+        fistLevel FirstLevelVo;
+        testGender gender "male";
+    }
+
+    businessAction TheTest {
+        purpose "test";
+        given nameList listOf textMin2Max30;
+        given name textMin2Max30;
+        then listOf textMin2Max30;
+
+    }
+
+
+    entity Fall auditAll {
+        text textMin2Max30 "test";
+        references manyToMany Fall bidirectional;
+    }
+
+    abstract entity AbstractEntity {
+        text1 textMin2Max30 "test";
+    }
+
+    entity FirstLevelEntity extends AbstractEntity auditAll {
+        text2 textMin2Max30 "test";
+    }
+
+    entity SecondLevelEntity extends FirstLevelEntity auditAll {
+        text3 textMin2Max30 "test";
+    }
+
+    entity FirstLevelCyclicEntity {
+     	text1 textMin2Max30 searchable "text1";
+     	refToSecond manyToMany SecondLevelCyclicEntity searchable;
+     }
+     
+     entity SecondLevelCyclicEntity {
+     	text2 textMin2Max30 searchable "text2";
+     	refToFirst manyToMany FirstLevelCyclicEntity searchable;
+    }
+    
+}
+
+
+
+
+guiModel thefrontend package de.muenchen.testproject.admin version 0.0.1 {
+    mainview TheEntityView;
+
+    // Big Entity
+    view TheEntityView appearsInMenu {
+        component TheVoEntity for thebackend.TheBigEntity type Table {
+            button detail navigatesTo TheEntityDetailView;
+            button create navigatesTo TheEntityCreateView;
+        }
+
+    }
+
+    view TheEntityDetailView {
+        component ReadTheTestEntity for thebackend.TheBigEntity type ReadWriteForm {
+    	    button save navigatesTo TheEntityView;
+    	    button cancel navigatesTo TheEntityView;
+        }
+    }
+
+    view TheEntityCreateView {
+        component CreateTheTestEntity for thebackend.TheBigEntity type CreateForm {
+            button save navigatesTo TheEntityView;
+            button cancel navigatesTo TheEntityView;
+        }
+    }
+
+
+    // The DateEntity
+    view DateEntityView appearsInMenu {
+        component TheDateEntity for thebackend.DateEntity type Table {
+            button detail navigatesTo TheDateEntityDetailView;
+            button create navigatesTo TheDateEntityCreateView;
+        }
+
+    }
+
+    view TheDateEntityDetailView {
+        component ReadTheDateEntity for thebackend.DateEntity type ReadWriteForm {
+    	    button save navigatesTo DateEntityView;
+    	    button cancel navigatesTo DateEntityView;
+        }
+    }
+
+    view TheDateEntityCreateView {
+        component CreateTheDateEntity for thebackend.DateEntity type CreateForm {
+            button save navigatesTo DateEntityView;
+            button cancel navigatesTo DateEntityView;
+        }
+    }
+
+
+    // TheCustomEntity
+    view CustomEntityView appearsInMenu {
+        component TheCustomEntity for thebackend.CustomEntity type List {
+            button detail navigatesTo CustomEntityDetailView;
+            button create navigatesTo CustomEntityCreateView;
+        }
+    }
+
+    view CustomEntityDetailView {
+        component ReadCustomEntity for thebackend.CustomEntity type ReadWriteForm {
+    	    button save navigatesTo CustomEntityView;
+    	    button cancel navigatesTo CustomEntityView;
+        }
+    }
+
+    view CustomEntityCreateView {
+        component CreateCustomEntity for thebackend.CustomEntity type CreateForm {
+            button save navigatesTo CustomEntityView;
+            button cancel navigatesTo CustomEntityView;
+        }
+    }
+
+
+
+}

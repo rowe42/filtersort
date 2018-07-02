@@ -1,0 +1,807 @@
+{
+    "allowRemoteResourceManagement": false,
+    "policyEnforcementMode": "ENFORCING",
+    "resources": [		
+    {
+      "name": "thebackend_READ_FirstLevelVo",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_WRITE_FirstLevelVo",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_DELETE_FirstLevelVo",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_READ_SecondLevelVo",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_WRITE_SecondLevelVo",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_DELETE_SecondLevelVo",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_READ_ThirdLevelVo",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_WRITE_ThirdLevelVo",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_DELETE_ThirdLevelVo",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_READ_TheBigEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_WRITE_TheBigEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_DELETE_TheBigEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_READ_FirstRealtionEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_WRITE_FirstRealtionEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_DELETE_FirstRealtionEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_READ_SecondRealtionEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_WRITE_SecondRealtionEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_DELETE_SecondRealtionEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_READ_DateEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_WRITE_DateEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_DELETE_DateEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_READ_CustomEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_WRITE_CustomEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_DELETE_CustomEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_READ_Fall",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_WRITE_Fall",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_DELETE_Fall",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_READ_AbstractEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_WRITE_AbstractEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_DELETE_AbstractEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_READ_FirstLevelEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_WRITE_FirstLevelEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_DELETE_FirstLevelEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_READ_SecondLevelEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_WRITE_SecondLevelEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_DELETE_SecondLevelEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_READ_FirstLevelCyclicEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_WRITE_FirstLevelCyclicEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_DELETE_FirstLevelCyclicEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_READ_SecondLevelCyclicEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_WRITE_SecondLevelCyclicEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_DELETE_SecondLevelCyclicEntity",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thebackend_BUSINESSACTION_TheTest",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thefrontend_GUI_TheEntityView",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thefrontend_GUI_TheEntityDetailView",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thefrontend_GUI_TheEntityCreateView",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thefrontend_GUI_DateEntityView",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thefrontend_GUI_TheDateEntityDetailView",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thefrontend_GUI_TheDateEntityCreateView",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thefrontend_GUI_CustomEntityView",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thefrontend_GUI_CustomEntityDetailView",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    },
+    {
+      "name": "thefrontend_GUI_CustomEntityCreateView",
+      "type": "testproject-thebackend-service",
+      "typedScopes": []
+    }
+   ],
+   "policies": [
+        {
+          "name": "rolepolicy_admin",
+          "type": "role",
+          "logic": "POSITIVE",
+          "decisionStrategy": "UNANIMOUS",
+          "config": {
+            "roles": "[{\"id\":\"openIdDemo/clientrole_admin\",\"required\":false}]"
+          }
+        },
+        {
+          "name": "rolepolicy_readonly",
+          "type": "role",
+          "logic": "POSITIVE",
+          "decisionStrategy": "UNANIMOUS",
+          "config": {
+            "roles": "[{\"id\":\"openIdDemo/clientrole_readonly\",\"required\":false}]"
+          }
+        },
+    {
+        "name": "permission_thebackend_DELETE_FirstLevelVo",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_DELETE_FirstLevelVo\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+    {
+        "name": "permission_thebackend_WRITE_FirstLevelVo",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_WRITE_FirstLevelVo\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+      {
+      "name": "permission_thebackend_READ_FirstLevelVo",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"thebackend_READ_FirstLevelVo\"]",
+        "applyPolicies": "[\"rolepolicy_admin\",\"rolepolicy_readonly\"]"
+      }
+    },
+    {
+        "name": "permission_thebackend_DELETE_SecondLevelVo",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_DELETE_SecondLevelVo\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+    {
+        "name": "permission_thebackend_WRITE_SecondLevelVo",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_WRITE_SecondLevelVo\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+      {
+      "name": "permission_thebackend_READ_SecondLevelVo",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"thebackend_READ_SecondLevelVo\"]",
+        "applyPolicies": "[\"rolepolicy_admin\",\"rolepolicy_readonly\"]"
+      }
+    },
+    {
+        "name": "permission_thebackend_DELETE_ThirdLevelVo",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_DELETE_ThirdLevelVo\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+    {
+        "name": "permission_thebackend_WRITE_ThirdLevelVo",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_WRITE_ThirdLevelVo\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+      {
+      "name": "permission_thebackend_READ_ThirdLevelVo",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"thebackend_READ_ThirdLevelVo\"]",
+        "applyPolicies": "[\"rolepolicy_admin\",\"rolepolicy_readonly\"]"
+      }
+    },
+    {
+        "name": "permission_thebackend_DELETE_TheBigEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_DELETE_TheBigEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+    {
+        "name": "permission_thebackend_WRITE_TheBigEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_WRITE_TheBigEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+      {
+      "name": "permission_thebackend_READ_TheBigEntity",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"thebackend_READ_TheBigEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\",\"rolepolicy_readonly\"]"
+      }
+    },
+    {
+        "name": "permission_thebackend_DELETE_FirstRealtionEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_DELETE_FirstRealtionEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+    {
+        "name": "permission_thebackend_WRITE_FirstRealtionEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_WRITE_FirstRealtionEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+      {
+      "name": "permission_thebackend_READ_FirstRealtionEntity",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"thebackend_READ_FirstRealtionEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\",\"rolepolicy_readonly\"]"
+      }
+    },
+    {
+        "name": "permission_thebackend_DELETE_SecondRealtionEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_DELETE_SecondRealtionEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+    {
+        "name": "permission_thebackend_WRITE_SecondRealtionEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_WRITE_SecondRealtionEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+      {
+      "name": "permission_thebackend_READ_SecondRealtionEntity",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"thebackend_READ_SecondRealtionEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\",\"rolepolicy_readonly\"]"
+      }
+    },
+    {
+        "name": "permission_thebackend_DELETE_DateEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_DELETE_DateEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+    {
+        "name": "permission_thebackend_WRITE_DateEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_WRITE_DateEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+      {
+      "name": "permission_thebackend_READ_DateEntity",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"thebackend_READ_DateEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\",\"rolepolicy_readonly\"]"
+      }
+    },
+    {
+        "name": "permission_thebackend_DELETE_CustomEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_DELETE_CustomEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+    {
+        "name": "permission_thebackend_WRITE_CustomEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_WRITE_CustomEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+      {
+      "name": "permission_thebackend_READ_CustomEntity",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"thebackend_READ_CustomEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\",\"rolepolicy_readonly\"]"
+      }
+    },
+    {
+        "name": "permission_thebackend_DELETE_Fall",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_DELETE_Fall\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+    {
+        "name": "permission_thebackend_WRITE_Fall",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_WRITE_Fall\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+      {
+      "name": "permission_thebackend_READ_Fall",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"thebackend_READ_Fall\"]",
+        "applyPolicies": "[\"rolepolicy_admin\",\"rolepolicy_readonly\"]"
+      }
+    },
+    {
+        "name": "permission_thebackend_DELETE_AbstractEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_DELETE_AbstractEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+    {
+        "name": "permission_thebackend_WRITE_AbstractEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_WRITE_AbstractEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+      {
+      "name": "permission_thebackend_READ_AbstractEntity",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"thebackend_READ_AbstractEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\",\"rolepolicy_readonly\"]"
+      }
+    },
+    {
+        "name": "permission_thebackend_DELETE_FirstLevelEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_DELETE_FirstLevelEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+    {
+        "name": "permission_thebackend_WRITE_FirstLevelEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_WRITE_FirstLevelEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+      {
+      "name": "permission_thebackend_READ_FirstLevelEntity",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"thebackend_READ_FirstLevelEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\",\"rolepolicy_readonly\"]"
+      }
+    },
+    {
+        "name": "permission_thebackend_DELETE_SecondLevelEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_DELETE_SecondLevelEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+    {
+        "name": "permission_thebackend_WRITE_SecondLevelEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_WRITE_SecondLevelEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+      {
+      "name": "permission_thebackend_READ_SecondLevelEntity",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"thebackend_READ_SecondLevelEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\",\"rolepolicy_readonly\"]"
+      }
+    },
+    {
+        "name": "permission_thebackend_DELETE_FirstLevelCyclicEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_DELETE_FirstLevelCyclicEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+    {
+        "name": "permission_thebackend_WRITE_FirstLevelCyclicEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_WRITE_FirstLevelCyclicEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+      {
+      "name": "permission_thebackend_READ_FirstLevelCyclicEntity",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"thebackend_READ_FirstLevelCyclicEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\",\"rolepolicy_readonly\"]"
+      }
+    },
+    {
+        "name": "permission_thebackend_DELETE_SecondLevelCyclicEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_DELETE_SecondLevelCyclicEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+    {
+        "name": "permission_thebackend_WRITE_SecondLevelCyclicEntity",
+        "type": "resource",
+        "logic": "POSITIVE",
+        "decisionStrategy": "UNANIMOUS",
+        "config": {
+        "resources": "[\"thebackend_WRITE_SecondLevelCyclicEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+        }
+    },
+      {
+      "name": "permission_thebackend_READ_SecondLevelCyclicEntity",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "AFFIRMATIVE",
+      "config": {
+        "resources": "[\"thebackend_READ_SecondLevelCyclicEntity\"]",
+        "applyPolicies": "[\"rolepolicy_admin\",\"rolepolicy_readonly\"]"
+      }
+    },
+    {
+      "name": "permission_thebackend_BUSINESSACTION_TheTest",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"thebackend_BUSINESSACTION_TheTest\"]",
+        "applyPolicies": "[\"rolepolicy_admin\"]"
+      }
+    },
+    {
+      "name": "permission_thefrontend_GUI_TheEntityView",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"thefrontend_GUI_TheEntityView\"]",
+        "applyPolicies": "[\"rolepolicy_readonly\",\"rolepolicy_admin\"]"
+      }
+    },
+    {
+      "name": "permission_thefrontend_GUI_TheEntityDetailView",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"thefrontend_GUI_TheEntityDetailView\"]",
+        "applyPolicies": "[\"rolepolicy_readonly\",\"rolepolicy_admin\"]"
+      }
+    },
+    {
+      "name": "permission_thefrontend_GUI_TheEntityCreateView",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"thefrontend_GUI_TheEntityCreateView\"]",
+        "applyPolicies": "[\"rolepolicy_readonly\",\"rolepolicy_admin\"]"
+      }
+    },
+    {
+      "name": "permission_thefrontend_GUI_DateEntityView",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"thefrontend_GUI_DateEntityView\"]",
+        "applyPolicies": "[\"rolepolicy_readonly\",\"rolepolicy_admin\"]"
+      }
+    },
+    {
+      "name": "permission_thefrontend_GUI_TheDateEntityDetailView",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"thefrontend_GUI_TheDateEntityDetailView\"]",
+        "applyPolicies": "[\"rolepolicy_readonly\",\"rolepolicy_admin\"]"
+      }
+    },
+    {
+      "name": "permission_thefrontend_GUI_TheDateEntityCreateView",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"thefrontend_GUI_TheDateEntityCreateView\"]",
+        "applyPolicies": "[\"rolepolicy_readonly\",\"rolepolicy_admin\"]"
+      }
+    },
+    {
+      "name": "permission_thefrontend_GUI_CustomEntityView",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"thefrontend_GUI_CustomEntityView\"]",
+        "applyPolicies": "[\"rolepolicy_readonly\",\"rolepolicy_admin\"]"
+      }
+    },
+    {
+      "name": "permission_thefrontend_GUI_CustomEntityDetailView",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"thefrontend_GUI_CustomEntityDetailView\"]",
+        "applyPolicies": "[\"rolepolicy_readonly\",\"rolepolicy_admin\"]"
+      }
+    },
+    {
+      "name": "permission_thefrontend_GUI_CustomEntityCreateView",
+      "type": "resource",
+      "logic": "POSITIVE",
+      "decisionStrategy": "UNANIMOUS",
+      "config": {
+        "resources": "[\"thefrontend_GUI_CustomEntityCreateView\"]",
+        "applyPolicies": "[\"rolepolicy_readonly\",\"rolepolicy_admin\"]"
+      }
+    }
+    ],
+    "scopes": []
+}

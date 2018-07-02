@@ -1,0 +1,20 @@
+{
+  "en": {
+        "attribute01" : null,
+        "attribute02" : null,
+        "secondRelationOtm" : null,
+        "secondRelationMtm" : null,
+        "secondRelationOto" : null,
+        "secondRelationMto" : null,
+        "firstRelationMtm" : null
+  }, 
+  "de": {
+        "attribute01" : null,
+        "attribute02" : null,
+        "secondRelationOtm" : null,
+        "secondRelationMtm" : null,
+        "secondRelationOto" : null,
+        "secondRelationMto" : null,
+        "firstRelationMtm" : null
+  }
+}
