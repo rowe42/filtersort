@@ -91,8 +91,12 @@
   		<sourceDirectory>src/main/java</sourceDirectory>
     	<resources>
         	<resource>
-            	<directory>src/main/resources</directory>
-            	<filtering>true</filtering>
+            	<directory>src/main/resources</directory>                
+                <filtering>true</filtering>
+        	</resource>
+                <resource>
+            	<directory>src/main/resources-nofiltering</directory>                
+                <filtering>false</filtering>
         	</resource>
     	</resources>
     	<plugins>
