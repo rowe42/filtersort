@@ -1,7 +1,7 @@
 /*
 * Copyright (c): it@M - Dienstleister fuer Informations- und Telekommunikationstechnik
 * der Landeshauptstadt Muenchen, 2018
-*/
+ */
 package de.muenchen.testproject.admin.thebackend.service.gen.controller.businessactions;
 
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
@@ -29,6 +29,24 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import de.muenchen.testproject.admin.thebackend.service.gen.businessActionParams.TheTest_BusinessActionParameters;
 
 import de.muenchen.testproject.admin.thebackend.service.gen.services.businessactions.TheTest_BusinessActionService;
+import de.muenchen.testproject.commons.authorization.PermissionsService;
+import java.security.KeyManagementException;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.X509Certificate;
+import javax.net.ssl.SSLContext;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.ssl.TrustStrategy;
+import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
 
 /*
  * This file will be overwritten on every change of the model!
@@ -41,61 +59,115 @@ import de.muenchen.testproject.admin.thebackend.service.gen.services.businessact
 @RequestMapping(value = "/businessActions")
 public class BusinessActionController implements ResourceProcessor<RepositoryLinksResource> {
 
-	@Autowired
-	private TheTest_BusinessActionService theTestactionService;
+    private static final Logger LOG = LoggerFactory.getLogger(PermissionsService.class);
 
-	/**
-	 * This method returns a list of links of all mapped businessActions.
-	 */
+    @Autowired
+    Environment env;
+
+    @Bean
+    public RestTemplate restTemplate()
+            throws KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
+
+        RestTemplate restTemplate;
+
+        if (ArrayUtils.contains(env.getActiveProfiles(), "local")) {
+            LOG.info("Found profile local - no certificate validation!");
+            TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
+
+            SSLContext sslContext = org.apache.http.ssl.SSLContexts.custom()
+                    .loadTrustMaterial(null, acceptingTrustStrategy)
+                    .build();
+
+            SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(sslContext);
+
+            CloseableHttpClient httpClient = HttpClients.custom()
+                    .setSSLSocketFactory(csf)
+                    .build();
+
+            HttpComponentsClientHttpRequestFactory requestFactory
+                    = new HttpComponentsClientHttpRequestFactory();
+
+            requestFactory.setHttpClient(httpClient);
+            restTemplate = new RestTemplate(requestFactory);
+        } else {
+            restTemplate = new RestTemplate();
+            LOG.info("Did not find profile local - certificates will be validated!");
+        }
+        return restTemplate;
+    }
+
+    @Autowired
+    private TheTest_BusinessActionService theTestactionService;
+
+    /**
+     * This method returns a list of links of all mapped businessActions.
+     */
     public List<Link> getMethodActions() {
         List<Link> methodLinks = new ArrayList<>();
         final String base = linkTo(BusinessActionController.class).toUri().toString();
-		
-		methodLinks.add(new Link(base + "/theTest", "theTest"));
+
+        methodLinks.add(new Link(base + "/theTest", "theTest"));
 
         return methodLinks;
     }
 
-	/**
-	 * Resource without content.
-	 */
+    /**
+     * Resource without content.
+     */
     class BusinessLinksResource extends ResourceSupport {
     }
 
-	/**
-	 * Return available businessActions on the /businessActions endpoint.
-	 */
+    /**
+     * Return available businessActions on the /businessActions endpoint.
+     */
     @RequestMapping(method = RequestMethod.GET)
-    public @ResponseBody ResponseEntity<BusinessLinksResource> getActions() {
+    public @ResponseBody
+    ResponseEntity<BusinessLinksResource> getActions() {
         BusinessLinksResource links = new BusinessLinksResource();
         links.add(linkTo(BusinessActionController.class).withSelfRel());
 
         links.add(getMethodActions());
 
-        return new ResponseEntity<>(links,HttpStatus.OK);
+        return new ResponseEntity<>(links, HttpStatus.OK);
     }
 
-	/**
-	 * This method adds the link to /businessActions to the REST-startpoint.
-	 */
+    /**
+     * This method adds the link to /businessActions to the REST-startpoint.
+     */
     @Override
     public RepositoryLinksResource process(RepositoryLinksResource repositoryLinksResource) {
-		repositoryLinksResource.add(linkTo(methodOn(BusinessActionController.class).getActions()).withRel("businessActions"));
+        repositoryLinksResource.add(linkTo(methodOn(BusinessActionController.class).getActions()).withRel("businessActions"));
         return repositoryLinksResource;
     }
 
-	/**
-	 * This BusinessAction's purpose is: test
-	 * It returns multiple String.
-	 */
-	@RequestMapping(value = "/theTest", method = RequestMethod.POST)
-	public ResponseEntity<?> theTest(PersistentEntityResourceAssembler assembler, @RequestHeader Map<String, Object> headers, @RequestBody TheTest_BusinessActionParameters body)
-	{	
-		java.util.List<String> result = theTestactionService.theTest(headers, 
-				body.getNameList(), 
-				body.getName()
-		);
-		return new ResponseEntity<>(result, HttpStatus.OK);
-	}
-	
-} 
+    /**
+     * This BusinessAction's purpose is: test It returns multiple String.
+     */
+    @RequestMapping(value = "/theTest", method = RequestMethod.POST)
+    public ResponseEntity<?> theTest(PersistentEntityResourceAssembler assembler, @RequestHeader Map<String, Object> headers, @RequestBody TheTest_BusinessActionParameters body) throws KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
+        RestTemplate restTemplate = new RestTemplate();
+        String response = restTemplate.getForObject("https://localhost:8870/permissions", String.class);
+        JSONObject responseJSON = new JSONObject(response);
+        LOG.info("JSON received from User-Service: " + response);
+
+        java.util.List<String> result = theTestactionService.theTest(headers,
+                body.getNameList(),
+                body.getName()
+        );
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    /**
+     * This BusinessAction's purpose is: test a remote call to another MS
+     */
+    @RequestMapping(value = "/theRemoteTest", method = RequestMethod.GET)
+    public ResponseEntity<?> theTestGet(PersistentEntityResourceAssembler assembler, @RequestHeader Map<String, Object> headers) throws KeyStoreException, NoSuchAlgorithmException, KeyManagementException {
+        RestTemplate restTemplate = restTemplate();
+        String response = restTemplate.getForObject("https://localhost:8870/permissions", String.class);
+        JSONObject responseJSON = new JSONObject(response);
+        LOG.info("JSON received from User-Service: " + response);
+
+        return new ResponseEntity<>(responseJSON.toString(), HttpStatus.OK);
+    }
+
+}

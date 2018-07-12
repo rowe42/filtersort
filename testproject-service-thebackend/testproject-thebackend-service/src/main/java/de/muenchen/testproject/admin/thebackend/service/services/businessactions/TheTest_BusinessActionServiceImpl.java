@@ -50,8 +50,8 @@ public class TheTest_BusinessActionServiceImpl implements TheTest_BusinessAction
 		if(!nullParams.isEmpty()){
 			throw new IllegalArgumentException("Expected values in body: java.util.List<String> nameList, String name - Missing "+nullParams);
 		}
-		
-		throw new UnsupportedOperationException("The BusinessAction thetest is not yet implemented!");
+		return null;
+		//throw new UnsupportedOperationException("The BusinessAction thetest is not yet implemented!");
 	}
 	
 }
